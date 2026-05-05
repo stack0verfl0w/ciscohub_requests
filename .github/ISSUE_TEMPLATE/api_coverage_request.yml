@@ -1,0 +1,70 @@
+# Sync dropdown options with the private CiscoHub repo: scripts/data/cisco_pillars.yaml (pillars list).
+name: API coverage request
+description: Request a new or expanded Cisco API guide on CiscoHub
+title: "[API request] "
+labels:
+  - api-request
+  - needs-triage
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve CiscoHub. You need a **free GitHub account** to submit.
+        Do not use this form for ads, SEO spam, or bulk automated submissions.
+
+  - type: dropdown
+    id: cisco_pillar
+    attributes:
+      label: Cisco pillar / product
+      description: Choose the area that best matches your request (must match CiscoHub scope).
+      options:
+        - ACI — Data Center
+        - Catalyst Center
+        - Core routing (NAPALM / agentic examples)
+        - CUCM — Collaboration
+        - IOS-XE
+        - Meraki
+        - NX-OS
+        - Other (Cisco) — specify product + doc link below
+        - PCCE
+        - Parsers (show command output)
+        - SD-WAN
+        - Security (ASA / FTD)
+        - UCCX
+        - Webex
+    validations:
+      required: true
+
+  - type: input
+    id: object_api
+    attributes:
+      label: Object or API surface
+      description: e.g. AXL addPhone, Webex /v1/rooms, ACI fvTenant MO, IOS-XE RESTCONF path
+      placeholder: Be specific (operation names, MO classes, or REST paths)
+    validations:
+      required: true
+
+  - type: textarea
+    id: reference_url
+    attributes:
+      label: Official Cisco documentation or API reference (URL)
+      description: Link to Cisco developer docs, API reference, or configuration guide.
+      placeholder: https://developer.cisco.com/... or https://www.cisco.com/c/en/us/td/docs/...
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: What should the guide cover?
+      description: Use case, sample scenario, or gaps in current docs.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: not_spam
+    attributes:
+      label: Confirmation
+      options:
+        - label: I am requesting documentation for a Cisco product and this is not promotional or automated spam.
+          required: true

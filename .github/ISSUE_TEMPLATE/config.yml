@@ -1,0 +1,2 @@
+# Optional: set blank_issues_enabled: false to force templates only (stricter).
+blank_issues_enabled: true
