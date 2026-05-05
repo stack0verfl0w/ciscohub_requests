@@ -15,3 +15,8 @@ Please do not use this tracker for ads, SEO spam, or bulk automated posts.
 Issue templates and the welcome workflow in **`.github/`** are mirrored from the private CiscoHub repo’s **`intake-public/`** folder. When you change forms, update **`intake-public/`** in the docs repo and copy files here (or push from that tree). Keep dropdown options aligned with **`scripts/data/cisco_pillars.yaml`** in the docs repo.
 
 **Labels:** `api-request`, `needs-triage` (default), `accepted` (after triage).
+
+
+---
+
+Issue tracking: resolved requests may be closed with a note pointing to [CiscoHub](https://ciscohub.com/) docs updates.
