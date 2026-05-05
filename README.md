@@ -1,27 +1,17 @@
-# CiscoHub — public API request intake
+# CiscoHub — API coverage requests
 
-This folder is a **bootstrap** for a **separate, public** GitHub repository used only for **API coverage requests** (issues). The main CiscoHub documentation repository can stay **private**.
+This **public** repository exists so anyone can ask for **new or expanded Cisco API guides** on **[CiscoHub](https://ciscohub.com/)** without access to the private documentation source repo.
 
-## Create the public repo
+## Submit a request
 
-1. On GitHub, create a new **public** repository (suggested name: `ciscohub-requests`).
-2. Copy **everything under `intake-public/`** (including `.github`) into the root of that new repository and push.
-3. In your **private** docs repo, set the same slug in two places (keep them in sync):
-   - `mkdocs.yml` → `extra.public_issues_repo`
-   - `scripts/data/cisco_pillars.yaml` → `intake_repository`
+1. Sign in to GitHub (free account).
+2. Open **[New API coverage request](https://github.com/stack0verfl0w/ciscohub_requests/issues/new?template=api_coverage_request.yml)**.
+3. Fill in the form: pillar, specific API/object, **official Cisco doc link**, and what the guide should cover.
 
-## Labels
+Please do not use this tracker for ads, SEO spam, or bulk automated posts.
 
-GitHub will attach labels from the issue template when users submit. Ensure these exist (they are usually created automatically on first use):
+## Maintainer note
 
-- `api-request`
-- `needs-triage`
-- `accepted` (for maintainers after triage)
+Issue templates and the welcome workflow in **`.github/`** are mirrored from the private CiscoHub repo’s **`intake-public/`** folder. When you change forms, update **`intake-public/`** in the docs repo and copy files here (or push from that tree). Keep dropdown options aligned with **`scripts/data/cisco_pillars.yaml`** in the docs repo.
 
-## Sync when templates change
-
-When you edit `intake-public/.github/ISSUE_TEMPLATE/api_coverage_request.yml`, copy the updated files to the public intake repo and push. The dropdown options must stay aligned with `scripts/data/cisco_pillars.yaml` in the private repo.
-
-## Actions
-
-The included workflow posts a short welcome comment on new `api-request` issues. Enable **Actions** on the public repo if prompted.
+**Labels:** `api-request`, `needs-triage` (default), `accepted` (after triage).
