@@ -5,20 +5,37 @@ on:
     types: [opened]
 
 jobs:
-  comment:
+  triage:
     runs-on: ubuntu-latest
     permissions:
       issues: write
     steps:
+      - name: Apply labels when the intake form was used
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const body = context.payload.issue.body || '';
+            if (!body.includes('### Cisco pillar / product')) return;
+            const cur = context.payload.issue.labels.map((l) => l.name);
+            const add = [];
+            if (!cur.includes('api-request')) add.push('api-request');
+            if (!cur.includes('needs-triage')) add.push('needs-triage');
+            if (add.length === 0) return;
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: add,
+            });
       - name: Welcome triage note
         uses: actions/github-script@v7
         with:
           script: |
-            const labels = context.payload.issue.labels.map((l) => l.name);
-            if (!labels.includes('api-request')) {
-              return;
-            }
-            const body = [
+            const body = context.payload.issue.body || '';
+            const hadLabel = context.payload.issue.labels.map((l) => l.name).includes('api-request');
+            // Payload labels are stale if we just added them in the previous step — key off the form body too.
+            if (!hadLabel && !body.includes('### Cisco pillar / product')) return;
+            const welcome = [
               'Thanks for the API coverage request.',
               '',
               '**Triage:** Maintainers will review and may add the `accepted` label when the request is ready for implementation.',
@@ -29,5 +46,5 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: context.issue.number,
-              body,
+              body: welcome,
             });
