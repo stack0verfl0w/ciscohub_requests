@@ -19,10 +19,13 @@ body:
       description: Choose the area that best matches your request (must match CiscoHub scope).
       options:
         - ACI — Data Center
+        - Catalyst 9800 WLC
         - Catalyst Center
         - Core routing (NAPALM / agentic examples)
         - CUCM — Collaboration
+        - FMC — Firewall Management Center
         - IOS-XE
+        - ISE — Identity Services Engine
         - Meraki
         - NX-OS
         - Other (Cisco) — specify product + doc link below
@@ -31,6 +34,7 @@ body:
         - SD-WAN
         - Security (ASA / FTD)
         - UCCX
+        - Unity Connection
         - Webex
     validations:
       required: true
